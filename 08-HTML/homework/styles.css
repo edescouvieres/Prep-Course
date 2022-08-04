@@ -15,3 +15,19 @@ img{
     font-size: 18px;
     margin: 50px;
 }
+
+/* establecer imagen de fondo */
+body{
+    background-image: url("http://cdn28.us1.fansshare.com/photograph/ratatouille/chef-skinner-ratatouille-cartoon-hd-wallpaper-chef-1414377419.jpg");
+}
+
+/* Centrar todos los div */
+div{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* Centrar todos los elementos de la pagina (leer sobre flexbox)*/
+
