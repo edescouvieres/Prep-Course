@@ -10,6 +10,16 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+  
+  // Codigo paso a paso:
+  // let myArray = [];
+  // for (var key in objeto){
+  //     myArray.push([key, objeto[key]]);
+  // }
+  // return myArray;
+
+  // Codigo con metodo en una sola linea:
+    return Object.entries(objeto);
 }
 
 
@@ -18,6 +28,16 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  var cantLetras = {};
+  for (let i = 0; i < string.length; i++){
+      if(cantLetras.hasOwnProperty(string[i])){
+        cantLetras[string[i]]++;
+      }
+      else{
+        cantLetras[string[i]] = 1;
+      }
+  }
+  return cantLetras;
 }
 
 
@@ -26,6 +46,18 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+  var lower = '';
+  var upper = '';
+
+  for(let i = 0; i < s.length; i++){
+    if(s[i] !== s[i].toUpperCase()){
+      lower += s[i];
+    }
+    else{
+      upper += s[i];
+    }
+  }
+  return upper + lower;
 }
 
 
@@ -35,7 +67,14 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
-} 
+  var palabras = str.split(" ");
+  var fraseInvertida = [];
+
+  for(let i = 0; i < palabras.length; i++){
+    fraseInvertida.push(palabras[i].split("").reverse().join(""));
+  }
+  return fraseInvertida.join(" ");
+}
 
 
 function capicua(numero){
@@ -43,6 +82,21 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+  // Paso a paso
+  // var numeroString = numero.toString();
+  // for(let i = 0; i < numeroString.length/2; i++){
+  //   if(!(numeroString[i] === numeroString[numeroString.length -1 - i])){
+  //     return "No es capicua";
+  //   }
+  // }
+  //   return "Es capicua";
+  //  Metodo rapido:
+  var numeroString = numero.toString();
+  if(numeroString === numeroString.split('').reverse().join('')){
+    return 'Es capicua';
+  }else{
+    return 'No es capicua';
+  }
 }
 
 
@@ -50,6 +104,14 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+  var text = '';
+  
+  for(let i = 0; i < cadena.length; i++){
+    if(cadena[i] !== 'a' && cadena[i] !== 'b' && cadena[i] !== 'c'){
+      text += cadena[i];
+    }
+  }
+  return text;
 }
 
 
@@ -57,6 +119,20 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+  var cambios = false;
+  
+  do{
+    var cambios = false;
+    for(let i = 0; i < arr.length -1; i++){
+      if(arr[i].length > arr[i+1].length){
+        var store = arr[i+1];
+        arr[i+1] = arr[i];
+        arr[i] = store;
+        cambios = true;
+      }
+    }
+  }while(cambios);
+  return arr;
 }
 
 
@@ -66,7 +142,18 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
+  var cruceArray = [];
+
+  for(let i = 0; i < arreglo1.length; i++){
+    var indice = arreglo1[i];
+    for(let j = 0; j < arreglo2.length; j++){
+      if(indice === arreglo2[j]){
+        cruceArray.push(indice);
+      }
+    }
+  } return cruceArray;
 }
+
 
 
 
@@ -83,4 +170,3 @@ module.exports = {
    sortArray,
    buscoInterseccion,
 };
-
